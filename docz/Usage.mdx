@@ -1,20 +1,36 @@
 ---
-name: Getting Started
+name: react-memoized-context
+route: '/'
+fullpage: true
 ---
 
 import { Playground } from 'docz'
 import AppDefault from '../demo/AppDefault.js';
 import AppMemoized from '../demo/AppMemoized.js';
 
-# Usage
+# react-memoized-context
 
-## Installing
+No more extra re-renders when consuming a Context in a complex component.
+- 1kb gzip.
+- Zero dependencies.
+- Tree-shakable. 🌴
+
+## Table of Contents
+- [Motivation](#motivation) - Why using it
+- [Using](#using) - HoC or Component
+- [Demo](#demo) - Showing the benefits of `react-memoized-context`.
+
+## Motivation
+When a component has simple props, using `PureComponent`/`Memo()` is a possible solution to avoid extra re-renders from props coming from Context. However, components with complex props might perform worse when using `PureComponent`. It's in that moment that `react-memoized-context` rocks. It works like `PureComponent`/`Memo()` but it only performs the shallow comparison to props coming from Context.
+
+
+## Using
 
 ```bash
 npm install react-memoized-context --save
 ```
 
-It can be used in 2 different ways: [withMemoizedContext](#withmemoizedcontext) HOC or [MemoizedContext](#memoizedcontext) component.
+It can be used in 2 ways: [withMemoizedContext](#withmemoizedcontext) HOC or [MemoizedContext](#memoizedcontext) component.
 
 ## withMemoizedContext()
 High-Order Component.
@@ -22,7 +38,7 @@ High-Order Component.
 ```js
 import { withMemoizedContext } from 'react-memoized-context';
 
-const ComponentConnected = withMemoizedContext(Context)(Component, memoKeys);
+const ComponentContexted = withMemoizedContext(Context)(Component, memoKeys);
 ```
 
 ### API
@@ -36,8 +52,8 @@ const ComponentConnected = withMemoizedContext(Context)(Component, memoKeys);
 import { withMemoizedContext } from 'react-memoized-context';
 import UserContext from './path/to/UserContext';
 
-function FootNote({ context }) {
-    return <p>Made by {context.name}</p>
+function FootNote(props) {
+  /* only re-renders if props.context.name changes */
 }
 
 // - Only re-renders FootNote if UserContext 'name' changes.
@@ -72,7 +88,7 @@ import { MemoizedContext } from 'react-memoized-context';
 import { MemoizedContext } from 'react-memoized-context';
 import UserContext from './path/to/UserContext';
 
-// FootNote is only re-render if UserContext 'name' changes.
+// FootNote only re-render if UserContext 'name' changes
 <MemoizedContext context={ UserContext } memoKeys={ ['name'] }>
     ({ name }) => <FootNote author={ name } />
 </MemoizedContext>
