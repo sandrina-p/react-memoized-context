@@ -14,7 +14,6 @@ See a [Working Demo](https://react-memoized-context.netlify.com/) showing the be
 ## Installing
 
 ```bash
-# Releasing very soon...
 npm install react-memoized-context --save
 ```
 
@@ -48,4 +47,7 @@ See full [Documentation with Demo](https://react-memoized-context.netlify.com/).
 ---
 
 ## Contributing
+- Development: `yarn docz dev`
+- Testing: `yarn test`
+
 Feel free to open an issue or MR to improve this package.

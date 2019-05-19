@@ -1,6 +1,6 @@
 {
   "name": "react-memoized-context",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Avoid unnecessary re-renders when consuming partially a React Context.",
   "keywords": [
     "react",
@@ -14,15 +14,17 @@
   "license": "MIT",
   "main": "src/index.js",
   "files": [
-    "src/"
+    "lib/"
   ],
   "scripts": {
-    "test": "jest --coverage",
     "docz:dev": "docz dev",
     "docz:build": "docz build",
-    "lint": "prettier '*/**/*.js' --write"
+    "test": "jest --coverage",
+    "lint": "prettier '*/**/*.js' --write",
+    "build": "babel src --out-dir lib  --ignore 'src/useMemoizedContext.js'"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
