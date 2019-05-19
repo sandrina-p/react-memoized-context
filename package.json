@@ -1,6 +1,6 @@
 {
   "name": "react-memoized-context",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Avoid unnecessary re-renders when consuming partially a React Context.",
   "keywords": [
     "react",
