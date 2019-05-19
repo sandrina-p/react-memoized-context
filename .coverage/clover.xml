@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1558223673394" clover="3.2.0">
+  <project timestamp="1558223673394" name="All files">
+    <metrics statements="31" coveredstatements="30" conditionals="15" coveredconditionals="13" methods="16" coveredmethods="16" elements="62" coveredelements="59" complexity="0" loc="31" ncloc="31" packages="2" files="6" classes="6"/>
+    <package name="src">
+      <metrics statements="25" coveredstatements="24" conditionals="8" coveredconditionals="7" methods="13" coveredmethods="13"/>
+      <file name="MemoContext.js" path="/Users/sandrina.pereira/Documents/git/ss/react-memoized-context/src/MemoContext.js">
+        <metrics statements="9" coveredstatements="8" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="3"/>
+        <line num="5" count="14" type="stmt"/>
+        <line num="7" count="14" type="stmt"/>
+        <line num="11" count="21" type="stmt"/>
+        <line num="12" count="21" type="stmt"/>
+        <line num="15" count="21" type="cond" truecount="3" falsecount="1"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="20" count="21" type="stmt"/>
+        <line num="21" count="21" type="stmt"/>
+        <line num="25" count="21" type="stmt"/>
+      </file>
+      <file name="MemoizedConsumer.js" path="/Users/sandrina.pereira/Documents/git/ss/react-memoized-context/src/MemoizedConsumer.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="8" count="10" type="stmt"/>
+      </file>
+      <file name="index.js" path="/Users/sandrina.pereira/Documents/git/ss/react-memoized-context/src/index.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="useMemoizedContext.js" path="/Users/sandrina.pereira/Documents/git/ss/react-memoized-context/src/useMemoizedContext.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="withMemoizedContext.js" path="/Users/sandrina.pereira/Documents/git/ss/react-memoized-context/src/withMemoizedContext.js">
+        <metrics statements="14" coveredstatements="14" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="8"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="7" type="stmt"/>
+        <line num="11" count="21" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="3" type="cond" truecount="4" falsecount="0"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="30" count="3" type="stmt"/>
+        <line num="31" count="7" type="stmt"/>
+        <line num="32" count="10" type="stmt"/>
+        <line num="36" count="3" type="stmt"/>
+        <line num="38" count="3" type="stmt"/>
+        <line num="41" count="3" type="stmt"/>
+        <line num="44" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.utils">
+      <metrics statements="6" coveredstatements="6" conditionals="7" coveredconditionals="6" methods="3" coveredmethods="3"/>
+      <file name="index.js" path="/Users/sandrina.pereira/Documents/git/ss/react-memoized-context/src/utils/index.js">
+        <metrics statements="6" coveredstatements="6" conditionals="7" coveredconditionals="6" methods="3" coveredmethods="3"/>
+        <line num="2" count="4" type="cond" truecount="2" falsecount="1"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="8" count="14" type="cond" truecount="4" falsecount="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="13" type="stmt"/>
+        <line num="13" count="13" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

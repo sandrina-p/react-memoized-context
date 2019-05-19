@@ -1,0 +1,105 @@
+---
+name: Getting Started
+---
+
+import { Playground } from 'docz'
+import AppDefault from '../demo/AppDefault.js';
+import AppMemoized from '../demo/AppMemoized.js';
+
+# Usage
+
+## Installing
+
+```bash
+npm install react-memoized-context --save
+```
+
+It can be used in 2 different ways: [withMemoizedContext](#withmemoizedcontext) HOC or [MemoizedContext](#memoizedcontext) component.
+
+## withMemoizedContext()
+High-Order Component.
+
+```js
+import { withMemoizedContext } from 'react-memoized-context';
+
+const ComponentConnected = withMemoizedContext(Context)(Component, memoKeys);
+```
+
+### API
+- `Context` - A React Context
+- `Component` - A React Component
+- `memoKeys` - An array of context keys to pass down to the Component.
+
+### Example
+
+```js
+import { withMemoizedContext } from 'react-memoized-context';
+import UserContext from './path/to/UserContext';
+
+function FootNote({ context }) {
+    return <p>Made by {context.name}</p>
+}
+
+// - Only re-renders FootNote if UserContext 'name' changes.
+const FootNoteContexted = withMemoizedContext(UserContext)(FootNote, ['name']);
+
+/* Standard way of accessing Context by HOC:
+ - Extra re-renders are caused because all the context is passed down.
+const FootNoteContexted = withUserContext(FootNote);
+*/
+
+export default GreetingsContexted;
+```
+
+## MemoizedContext
+RenderProp Component.
+
+```js
+import { MemoizedContext } from 'react-memoized-context';
+
+<MemoizedContext context={ UserContext } memoKeys={ ['name'] }>
+    ({ name }) => <FootNote author={ name } />
+</MemoizedContext>
+```
+
+### Props API
+- `context` - A React Context
+- `memoKeys` - An Array of context keys to pass down to the Component.
+
+### Example
+
+```js
+import { MemoizedContext } from 'react-memoized-context';
+import UserContext from './path/to/UserContext';
+
+// FootNote is only re-render if UserContext 'name' changes.
+<MemoizedContext context={ UserContext } memoKeys={ ['name'] }>
+    ({ name }) => <FootNote author={ name } />
+</MemoizedContext>
+
+/* Standard way of accessing Context by Consumer:
+- Extra re-renders are caused because all the context is provided, despite of only name being used.
+<UserContext.Consumer>
+    ({ name }) => <FootNote author={ name } />
+</UserContext.Consumer>
+*/
+```
+
+## Demo
+
+The 3 blue boxes below are consuming part of `UserContext` context: `updateUser`, `name` and `age` respectively.
+
+### Without `react-memoized-context`
+All boxes re-render when `UserContext` is updated, even if a box is not consuming the updated part. **Extra re-renders are happening ⚠️**.
+<Playground>
+    {/* Source code at: demo/AppDefault.js */}
+    <AppDefault />
+</Playground>
+
+### With `react-memoized-context`
+Each box only re-renders when a specific part of `UserContext` is updated. **No extra re-renders!** ⚡️
+
+<Playground>
+    {/* Source code at: demo/AppMemoized.js */}
+    <AppMemoized />
+</Playground>
