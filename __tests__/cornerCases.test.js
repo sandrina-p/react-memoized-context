@@ -42,7 +42,7 @@ describe('when using withMemoizedContext without memoKeys', () => {
   })
 })
 
-describe.only('<MemoContext /> - when updating the children', () => {
+describe('<MemoContext /> - when updating the children', () => {
   // make sure diffChildren (line 14) returns before reducing memoKeys.
   it.todo('should re-render the component correctly')
 })
