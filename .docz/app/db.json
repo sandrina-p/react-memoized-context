@@ -8,7 +8,8 @@
     "native": false,
     "codeSandbox": true,
     "themeConfig": {},
-    "separator": "-"
+    "separator": "-",
+    "dest": "/docs"
   },
   "entries": [
     {
@@ -83,7 +84,7 @@
   ],
   "props": [
     {
-      "key": "demo/AppDefault.js",
+      "key": "demo/AppMemoized.js",
       "value": [
         {
           "description": "",
@@ -94,7 +95,7 @@
       ]
     },
     {
-      "key": "demo/AppMemoized.js",
+      "key": "demo/AppDefault.js",
       "value": [
         {
           "description": "",
