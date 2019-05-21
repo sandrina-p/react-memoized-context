@@ -21,7 +21,7 @@
     "docz:build": "docz build",
     "test": "jest --coverage",
     "lint": "prettier '*/**/*.js' --write",
-    "build": "babel src --out-dir lib  --ignore 'src/useMemoizedContext.js'"
+    "build": "babel src --out-dir lib"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
