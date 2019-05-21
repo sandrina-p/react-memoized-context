@@ -8,10 +8,10 @@ const style = {
   padding: '0.5rem 1rem',
 }
 
-export default function Greetings({ intro = 'Hey there', name }) {
+export default function Greetings({ name }) {
   return (
     <p style={style} data-testid="greetings">
-      {intro} {name || 'person'}! <Count />
+      Hello {name || 'person'}! <Count />
     </p>
   )
 }

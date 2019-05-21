@@ -44,18 +44,3 @@ function withMemoized(MemoizedContext) {
 const withMemoizedContext = Context => withMemoized(withContext(Context))
 
 export default withMemoizedContext
-
-/* ----- HOW TO USE --------
-
-// --- Greetings.js
-function Greetings({ context, intro, ...otherProps }) {
-    return <p>{intro} { context.name }!</p>;
-}
-
-// Only re-renders if UserContext's name updates.
-export default withMemoizedContext(UserContext)(Greetings, ['name']);
-
-// --- LogIn.js
-<Greetings intro="Good Morning" />
-// Output -> <p>Good Morning Sandy</p>
-*/

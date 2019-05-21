@@ -1,25 +1,28 @@
-import React from 'react'
+import React, { useMemo, useContext } from 'react'
 import { withMemoizedContext, MemoizedConsumer } from '../src'
 import { UserContext, UserProvider } from './user-context'
 import FormBase from './Form'
 import GreetingsBase from './Greetings'
 import FutureBase from './Future'
 
-// Add UserContext to Form using withMemoizedContext()
+// Add UserContext using withMemoizedContext()
 function Form({ context }) {
   return <FormBase onChange={context.updateUser} />
 }
 
 const FormContexted = withMemoizedContext(UserContext)(Form, ['updateUser'])
 
-// Add UserContext to GreetingsBase using withMemoizedContext()
-function Greetings({ context }) {
-  return <GreetingsBase name={context.name} intro="Hello" />
+// Add UserContext using hook useMemo...
+function GreetingsContexted() {
+  const { name } = useContext(UserContext)
+
+  return useMemo(() => {
+    // Logic not memoized goes here
+    return <GreetingsBase name={name} />
+  }, [name])
 }
 
-const GreetingsContexted = withMemoizedContext(UserContext)(Greetings, ['name'])
-
-// Add UserContext to FutureBase using <MemoizedConsumer />
+// Add UserContext using <MemoizedConsumer />
 function FutureContexted() {
   return (
     <MemoizedConsumer context={UserContext} memoKeys={['age']}>

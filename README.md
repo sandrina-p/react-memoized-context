@@ -7,7 +7,6 @@
 
 Avoid unnecessary re-renders when consuming partially a React Context.
 
-
 - < 1kb GZIP 🔬
 - Zero dependencies 🙌
 - Tree-shakable 🌴
@@ -25,7 +24,7 @@ npm install react-memoized-context --save
 
 ## Using
 
-### A. Via HOC
+### A. HOC
 ```js
 import { withMemoizedContext } from 'react-memoized-context';
 
@@ -33,19 +32,44 @@ const FootNote = ({ context, ...otherProps }) => {
   /*... do stuff with context.name ...*/
 }
 
-// Only re-renders when UserContext.name changes.
+// Only re-renders FootNote when UserContext.name changes.
 const FootNoteContexted = withMemoizedContext(UserContext)(FootNote, ['name']);
 ```
 
-### B. Via Component renderProp
-
+### B. Component renderProp
 ```js
 import { MemoizedContext } from 'react-memoized-context';
 
-// Only re-renders when UserContext.name changes.
+// Only re-renders FootNote when UserContext.name changes.
 <MemoizedContext context={ UserContext } memoKeys={ ['name'] }>
     ({ name }) => <FootNote author={ name } />
 </MemoizedContext>
+```
+
+### C. Hook?
+Well... the way React hooks work, it's impossible to directly subscribe to a part of the context value without re-rendering. See [React issue #14110](https://github.com/facebook/react/issues/14110)
+
+```js
+function FootNote() {
+  const { name } = useContext(UserContext);
+
+  // FootNote re-renders when UserContext value changes, even if name is the same.
+  <FootNote author={ name } />
+}
+```
+
+#### Workaround
+Use an extra hook `useMemo` as a _wall_ between the Context part and the rest of the Component children. See [React issue #15156](https://github.com/facebook/react/issues/15156#issuecomment-474590693).
+
+```js
+function FootNote() {
+  const { name } = useContext(UserContext);
+
+  // Only re-renders FootNote when name is updated.
+  return useMemo(() => (
+    <FootNote author={ name } />
+  ), [name])
+}
 ```
 
 See full [Documentation with Demo](https://react-memoized-context.netlify.com/).
