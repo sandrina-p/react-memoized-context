@@ -1,7 +1,8 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import { UserContext, UserProvider } from '../demo/user-context'
 import { withMemoizedContext } from '../src/'
+import MemoContext from '../src/MemoContext'
 
 describe('when using withMemoizedContext without memoKeys', () => {
   let tree
@@ -42,7 +43,39 @@ describe('when using withMemoizedContext without memoKeys', () => {
   })
 })
 
-describe('<MemoContext /> - when updating the children', () => {
-  // make sure diffChildren (line 14) returns before reducing memoKeys.
-  it.todo('should re-render the component correctly')
+describe('<MemoContext />', () => {
+  it('should only re-render when updating the children or context[key]', () => {
+    let count = 0
+    const context = { a: 1, b: 2 }
+    const memoKeys = ['a']
+
+    const tree = mount(
+      <MemoContext context={context} memoKeys={memoKeys}>
+        {() => `Render: ${count++}`}
+      </MemoContext>
+    )
+
+    expect(tree.text()).toBe('Render: 0')
+
+    tree.setProps({
+      context: { a: 2 },
+    })
+
+    // a changed, so it should re-render.
+    expect(tree.text()).toBe('Render: 1')
+
+    tree.setProps({
+      context: { a: 2, b: 3 },
+    })
+
+    // b changed, but it's not part of memoKeys, so it should not re-render.
+    expect(tree.text()).toBe('Render: 1')
+
+    tree.setProps({
+      children: () => `Render again: ${count++}`,
+    })
+
+    // children is different, so it should re-render:
+    expect(tree.text()).toBe('Render again: 2')
+  })
 })
