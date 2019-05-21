@@ -60,14 +60,14 @@ import { withMemoizedContext } from 'react-memoized-context';
 import UserContext from './path/to/UserContext';
 
 function FootNote(props) {
-  /* only re-renders if props.context.name changes */
+  /*... do stuff with context.name ...*/
 }
 
-// - Only re-renders FootNote if UserContext 'name' changes.
+// Only re-renders FootNote when UserContext.name changes.
 const FootNoteContexted = withMemoizedContext(UserContext)(FootNote, ['name']);
 
 /* Standard way of accessing Context by HOC:
- - Extra re-renders are caused because all the context is passed down.
+- Extra re-renders happen because all the context is passed down.
 const FootNoteContexted = withUserContext(FootNote);
 */
 
@@ -95,7 +95,7 @@ import { MemoizedContext } from 'react-memoized-context';
 import { MemoizedContext } from 'react-memoized-context';
 import UserContext from './path/to/UserContext';
 
-// FootNote only re-render if UserContext 'name' changes
+// FootNote only re-render when UserContext 'name' changes.
 <MemoizedContext context={ UserContext } memoKeys={ ['name'] }>
     ({ name }) => <FootNote author={ name } />
 </MemoizedContext>
@@ -127,7 +127,7 @@ Use an extra hook `useMemo` as a _wall_ between the Context part and the rest of
 function FootNote() {
   const { name } = useContext(UserContext);
 
-  // Only re-renders FootNote when name is updated.
+  // Only re-renders FootNote when UserContext.name changes.
   return useMemo(() => (
     <FootNote author={ name } />
   ), [name])
