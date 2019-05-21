@@ -23,6 +23,7 @@ module.exports = {
                 singleQuote: true,
             },
         ],
+        'no-console': 0,
         'react/prop-types': 0, // TODO - Add flow / typescript
     },
     parserOptions: {
