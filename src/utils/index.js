@@ -1,15 +1,15 @@
-export function getDisplayName(prefix, Component) {
-    const name = Component.displayName || Component.name || 'Component';
+import displayName from 'react-display-name'
 
-    return `${prefix}(${name})`;
+export function getDisplayName(prefix, Component) {
+  return `${prefix}(${displayName(Component)})`
 }
 
 export function filterObject(object, filter) {
-    if (!object || !filter) {
-        return {};
-    }
+  if (!object || !filter) {
+    return {}
+  }
 
-    return filter.reduce((result, key) => {
-        return { ...result, [key]: object[key] };
-    }, {});
+  return filter.reduce((result, key) => {
+    return { ...result, [key]: object[key] }
+  }, {})
 }

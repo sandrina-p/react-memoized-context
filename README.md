@@ -8,7 +8,6 @@
 Avoid unnecessary re-renders when consuming partially a React Context.
 
 - < 1kb GZIP 🔬
-- Zero dependencies 🙌
 - Tree-shakable 🌴
 
 ## Motivation
