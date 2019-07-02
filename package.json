@@ -50,5 +50,8 @@
   },
   "peerDependencies": {
     "react": "^16.3"
+  },
+  "dependencies": {
+    "react-display-name": "^0.2.4"
   }
 }
